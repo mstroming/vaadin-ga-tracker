@@ -57,8 +57,13 @@ window.org_vaadin_googleanalytics_tracking_GoogleAnalyticsTracker = function() {
         var trackerId = state.trackerId;
         var domainName = state.domainName;
         var allowAnchor = state.allowAnchor;
+        var siteSpeedSampleRate = state.siteSpeedSampleRate;
 
-        window._gaut('create', trackerId, {'cookieDomain': domainName, 'allowAnchor': allowAnchor});
+        if (siteSpeedSampleRate != null) {
+            window._gaut('create', trackerId, {'cookieDomain': domainName, 'allowAnchor': allowAnchor, 'siteSpeedSampleRate': siteSpeedSampleRate});
+        } else {
+            window._gaut('create', trackerId, {'cookieDomain': domainName, 'allowAnchor': allowAnchor});
+        }
     };
 
 

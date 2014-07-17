@@ -102,6 +102,37 @@ public class GoogleAnalyticsTracker extends AbstractJavaScriptExtension
         setTrackingPrefix(trackingPrefix);
     }
 
+    /**
+     * Instantiate new Google Analytics tracker by id, domainName, siteSpeedSampleRate.
+     *
+     * @param trackerId The tracking id from Google Analytics. Something like
+     * 'UA-658457-8'.
+     * @param domainName The name of the domain to be tracked. Something like
+     * 'vaadin.com'. Universal tracker is created by default.
+     */
+    public GoogleAnalyticsTracker(String trackerId, String domainName, int siteSpeedSampleRate) {
+        this(trackerId);
+        setDomainName(domainName);
+        setSiteSpeedSampleRate(siteSpeedSampleRate);
+    }
+
+
+
+    /**
+     * Instantiate new Google Analytics tracker by id, domainName, trackingPrefix, siteSpeedSampleRate.
+     *
+     * @param trackerId The tracking id from Google Analytics. Something like
+     * 'UA-658457-8'.
+     * @param domainName The name of the domain to be tracked. Something like
+     * 'vaadin.com'. Universal tracker is created by default.
+     */
+    public GoogleAnalyticsTracker(String trackerId, String domainName, String trackingPrefix, int siteSpeedSampleRate) {
+        this(trackerId);
+        setDomainName(domainName);
+        setTrackingPrefix(trackingPrefix);
+        setSiteSpeedSampleRate(siteSpeedSampleRate);
+    }
+
 
     /**
      * Get the domain name associated with this tracker.
@@ -198,6 +229,25 @@ public class GoogleAnalyticsTracker extends AbstractJavaScriptExtension
      */
     public void setTrackerId(String trackerId) {
         getState().trackerId = trackerId;
+    }
+
+    /**
+     * Get the site speed sample rate associated with this tracker.
+     *
+     * @return The domain name
+     */
+    public int getSiteSpeedSampleRate() {
+        return getState().siteSpeedSampleRate;
+    }
+
+    /**
+     * Sets the site speed sample rate
+     *
+     * @param siteSpeedSampleRate The site speed sample rate
+     */
+    public void setSiteSpeedSampleRate(int siteSpeedSampleRate) {
+        getState().siteSpeedSampleRate = siteSpeedSampleRate;
+
     }
 
     /**
